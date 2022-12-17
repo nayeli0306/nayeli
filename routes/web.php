@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +15,36 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', [PagesController::class, 'fnIndex'] ) ->name('xIndex');
+Route::get('/', [PagesController::class,'fnIndex']) -> name('xIndex');
 
-Route::get('/detalle/{id}', [PagesController::class, 'fnEstDetalle'] ) ->name('Estudiante.xDetalle');
+////////////////////////////////////CURSO/////////////////////////////
+Route::post('/p', [PagesController::class,'fnRegistrarCurso']) -> name('Curso.xRegistrarCurso');
+
+
+Route::get('/listaCurso',[PagesController::class,'fnListaCurso']) -> name('xListaCurso');
+
+Route::get('/detalleCurso/{id}', [PagesController::class,'fnEstDetalleCurso']) -> name('Curso.xDetalleCurso');
+
+
+Route::get('/actualizarCurso/{id}', [PagesController::class,'fnEstActualizarCurso']) -> name('Curso.xActualizarCurso');
+Route::put('/actualizarCurso/{id}', [PagesController::class,'fnUpdateCurso']) -> name('Curso.xUpdateCurso');
+
+Route::delete('/eliminarCurso/{id}', [PagesController::class,'fnEliminarCurso']) -> name('Curso.xEliminarCurso');
+
+
+
+
+///////////////////////////////ESTUDIANTE///////////////////////
+
+Route::post('/s', [PagesController::class,'fnRegistrar']) -> name('Estudiante.xRegistrar');
+
+Route::get('/lista',[PagesController::class,'fnLista']) -> name('xLista');
+Route::get('/detalle/{id}', [PagesController::class,'fnEstDetalle']) -> name('Estudiante.xDetalle');
+
+Route::get('/actualizar/{id}', [PagesController::class,'fnEstActualizar']) -> name('Estudiante.xActualizar');
+Route::put('/actualizar/{id}', [PagesController::class,'fnUpdate']) -> name('Estudiante.xUpdate');
+
+Route::delete('/eliminar/{id}', [PagesController::class,'fnEliminar']) -> name('Estudiante.xEliminar');
+
 
 Route::get('/galeria/{numero?}',[PagesController::class, 'fnGaleria'] ) ->  where('numero', '[0-9]+')->name('xGaleria');
-
-
-Route::get('/lista',[PagesController::class, 'fnLista'] )->name('xLista');
-

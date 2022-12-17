@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('estudiantes', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->id();
-            $table->string('codEst');
-            $table->string('nomEst');
-            $table->string('apeEst');
-            $table->date('fnaEst');
-            $table->integer('turMat');
-            $table->integer('semMat');
-            $table->integer('estMat');
+            $table->string('denCur');   //taller de programacion we
+            $table->integer('hrsCur');  //10
+            $table->integer('creCur'); //8
+            $table->integer('plaCur'); // 2010 2022  1990
+            $table->string('tipCur'); //transversal Especialidad
+            $table->integer('estCur'); //01,0
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estudiantes');
+        Schema::dropIfExists('cursos');
     }
 };
